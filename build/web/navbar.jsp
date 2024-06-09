@@ -37,14 +37,14 @@
                     </span>
                     <h3>Historico</h3>
                 </a>
-                <?php if($_SESSION['tipo'] == 1) { ?>
-                <a href="userspage.jsp">
+                <% if(session.getAttribute("tipo").equals("1")) { %>
+                <a href="usersPage.jsp">
                     <span class="material-icons-sharp">
                         person_outline
                     </span>
                     <h3>Usuarios</h3>
                 </a>
-                <?php }  ?>
+                <% }  %>
                 <!-- <a href="#">
                     <span class="message-count">0</span>
                     <h3>Mensagens</h3>

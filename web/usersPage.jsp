@@ -1,0 +1,72 @@
+<%@ page import="java.sql.*" %>
+<%@ page import="java.util.Date" %>
+<%@ page import="model.conBd" %>
+
+<% conBd conexao = new conBd();
+        Connection conn = conexao.getConnection();
+        Statement s = conn.createStatement(); %>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Sharp" rel="stylesheet">
+    <link rel="stylesheet" href="css/index.css">
+    <title>Painel | Projeto PHP</title>
+</head>
+
+<body>
+
+    <%@ include file="navbar.jsp" %>
+    <!-- End of Sidebar Section -->
+
+    <!-- Main Content -->
+    <main>
+
+        <!-- End of Analyses -->
+
+        <!-- New Users Section -->
+
+        <!-- End of New Users Section -->
+
+        <!-- Recent Orders Table -->
+        <h1 style="margin-top:20px">Usuarios</h1>
+        <div class="">
+            <%
+            ResultSet usuarios = conn.createStatement().executeQuery("SELECT * FROM usuarios ORDER BY id DESC");
+            while (usuarios.next()) {
+                String nome = usuarios.getString("nome");
+                int tipo = usuarios.getInt("tipo");
+                String cargo = tipo == 1 ? "Administrador" : "Colaborador";
+                String data = usuarios.getString("data");
+            %>
+            <div class="col-md-4">
+                <div class="new-users">
+                    <div class="user-list">
+                        <div class="user">
+                            <h2><%= nome %></h2>
+                            <p style="margin-top:3px"><%= cargo %></p>
+                            <p><h3>Data de Criação</h3> <%= data %></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <%
+            }
+            usuarios.close();
+            %>
+            </div>
+
+    </main>
+
+
+    <!-- Right Section -->
+    <%@ include file="rightSection.jsp" %>
+</body>
+
+</html>
