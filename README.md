@@ -3,7 +3,6 @@
 1. Felipe Fernandes
 2. Julia Panaia
    
-Gerenciamento de Pedidos de uma Gráfica
 <div>​​
 <img src = "https://github.com/oawiix/ProjetoPOO2/blob/main/img/grafica.jpg"  largura = "500px"/>
 </div>​​
