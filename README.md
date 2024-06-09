@@ -115,3 +115,7 @@ ao cliente
 > Linha de codigo para conexáo:
 > "jdbc:mysql://localhost:<<porta, normalmente 3306>>/<<nome do banco>>"
 > + "?user=<<usuario>>&password=<<senha, vazio caso não tenha sido definida>>";
+>
+> Lib necessaria para Visual Code:
+> Javax Servlet Api 4.0.1
+> https://mvnrepository.com/artifact/javax.servlet/javax.servlet-api/4.0.1
