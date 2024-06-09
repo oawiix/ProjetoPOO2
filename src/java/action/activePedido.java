@@ -1,66 +1,47 @@
+package action;
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Servlet.java to edit this template
  */
 
 import java.io.IOException;
-
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import model.pedido;
 
 /**
  *
  * @author dange
  */
+@WebServlet(urlPatterns = {"/noactive"})
+public class activePedido extends HttpServlet {
 
-import model.pedido;
-
-@WebServlet(urlPatterns = {"/delete"})
-public class deletePedido extends HttpServlet {
-
-    /**
-     * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
-     * methods.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws Exception 
-     */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws Exception {}
 
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {             
-                
-        if (request.getMethod().equals("GET") && request.getParameter("id") != null) {
-            response.sendRedirect("historicoPedido.jsp");
-            pedido pedido;
-            try {
-                pedido = new pedido();
-                int id = Integer.parseInt(request.getParameter("id"));
-                pedido.setId(id);
-                pedido.delete();
-            } catch (Exception e) {
-                // TODO Auto-generated catch block
-                e.printStackTrace();
-            } finally {
-                // Add your finally block code here
-            }
-        }}
-        
-    
+            throws ServletException, IOException {
 
-    /**
-     * Returns a short description of the servlet.
-     *
-     * @return a String containing servlet description
-     */
+        if (request.getMethod().equals("GET") && request.getParameter("id") != null) {
+            try {
+                pedido pedido = new pedido();
+                int id = Integer.parseInt(request.getParameter("id"));
+                pedido.noActive(id);
+                response.sendRedirect("dashboard.jsp");
+            } catch (Exception e) {
+                // Handle the exception here
+            }
+        }
+    }
+    
+        
+                
     @Override
     public String getServletInfo() {
         return "Short description";

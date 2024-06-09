@@ -2,6 +2,8 @@
 <%@ page import="java.util.Date" %>
 <%@ page import="model.conBd" %>
 
+<% if(session.getAttribute("nome") != null) { %>
+
 <% conBd conexao = new conBd();
         Connection conn = conexao.getConnection();
         Statement s = conn.createStatement(); %>
@@ -22,27 +24,26 @@
 
 <body>
 
-    <%@ include file="navbar.jsp" %> <!-- Include the navbar.jsp file -->
-    <!-- End of Sidebar Section -->
+    <%@ include file="WEB-INF/jspf/navbar.jsp" %> <!-- Inclui a navbar -->
     <%
-    int page2 = request.getParameter("page") != null ? Integer.parseInt(request.getParameter("page")) : 1;
-    int limit = 10;
-    int offset = (page2 - 1) * limit;
+    int page2 = request.getParameter("page") != null ? Integer.parseInt(request.getParameter("page")) : 1; // Pega o valor da página
+    int limit = 7; // Define o limite de pedidos por página
+    int offset = (page2 - 1) * limit; // Calcula o offset
 
-    String countQuery = "SELECT COUNT(*) FROM pedidos WHERE active = 1";
-    PreparedStatement countStmt = conn.prepareStatement(countQuery);
-    ResultSet countResult = countStmt.executeQuery();
-    countResult.next();
-    int totalRows = countResult.getInt(1);
-    int totalPages = (int) Math.ceil(totalRows / (double) limit);
+    String countQuery = "SELECT COUNT(*) FROM pedidos WHERE active = 1"; // Query para contar o total de pedidos
+    PreparedStatement countStmt = conn.prepareStatement(countQuery); // Prepara a query
+    ResultSet countResult = countStmt.executeQuery(); // Executa a query
+    countResult.next(); // Pega o resultado
+    int totalRows = countResult.getInt(1); // Pega o total de pedidos
+    int totalPages = (int) Math.ceil(totalRows / (double) limit); // Calcula o total de páginas
 
-    String selectQuery = "SELECT * FROM pedidos WHERE active = 1 ORDER BY id DESC LIMIT ?, ?";
-    PreparedStatement selectStmt = conn.prepareStatement(selectQuery);
-    selectStmt.setInt(1, offset);
-    selectStmt.setInt(2, limit);
-    ResultSet pedidosResult = selectStmt.executeQuery();
+    String selectQuery = "SELECT * FROM pedidos WHERE active = 1 ORDER BY id DESC LIMIT ?, ?"; // Query para selecionar os pedidos
+    PreparedStatement selectStmt = conn.prepareStatement(selectQuery); // Prepara a query
+    selectStmt.setInt(1, offset); // Adiciona o offset
+    selectStmt.setInt(2, limit); // Adiciona o limite
+    ResultSet pedidosResult = selectStmt.executeQuery(); // Executa a query
     %>
-            <style>
+            <style> /* Estilo da paginação */
             .pages {
                 text-decoration: none;
                 display: flex;
@@ -59,35 +60,35 @@
             .pages a {
                 text-decoration: none;
             }
-        </style>
+        </style> <!-- Fim do Estilo da paginação -->
         
-    <!-- Main Content -->
+    <!-- Conteudo da Main -->
     <main>
+        <!-- Analise -->
         <h1 style="margin-top:20px">Analise</h1>
-        <!-- Analyses -->
         <div class="analyse">
             <div class="sales">
                 <div class="status">
                     <div style="margin-left: -10px;">
-                        <h3>Vendas</h3>
-                        <h1>
-                        <%
-                        double total = 0;
-                        ResultSet pedidos = s.executeQuery("SELECT valor FROM pedidos WHERE active = 2");
-                        while (pedidos.next()) {
-                            total += pedidos.getDouble("valor");
+                        <h3>Vendas</h3> 
+                        <h1> 
+                        <% 
+                        double total = 0;  // Variável para armazenar o total 
+                        ResultSet pedidos = s.executeQuery("SELECT valor FROM pedidos WHERE active = 2");  // Query para pegar o valor dos pedidos
+                        while (pedidos.next()) {  // Loop para somar os valores
+                            total += pedidos.getDouble("valor"); // Soma os valores
                         }
-                        out.print("Total: R$ " + String.format("%.2f", total));
+                        out.print("Total: R$ " + String.format("%.2f", total)); // Mostra o total
                         %>
                         </h1>
                         <span style="margin-left:10px;">
                         <%
-                        double total2 = 0;
-                        ResultSet pedidos2 = s.executeQuery("SELECT valor FROM pedidos WHERE active = 1");
-                        while (pedidos2.next()) {
-                            total2 += pedidos2.getDouble("valor");
+                        double total2 = 0; // Variável para armazenar o total
+                        ResultSet pedidos2 = s.executeQuery("SELECT valor FROM pedidos WHERE active = 1"); // Query para pegar o valor dos pedidos
+                        while (pedidos2.next()) { // Loop para somar os valores
+                            total2 += pedidos2.getDouble("valor"); // Soma os valores
                         }
-                        out.print("Em andamento: R$ " + String.format("%.2f", total2));
+                        out.print("Em andamento: R$ " + String.format("%.2f", total2)); // Mostra o total
                         %>
                         </span>
                     </div>
@@ -99,12 +100,12 @@
                         <h3>Pedidos Concluidos</h3>
                         <h1>
                         <%
-                        int total3 = 0;
-                        ResultSet pedidos3 = s.executeQuery("SELECT id FROM pedidos WHERE active = 2");
-                        while (pedidos3.next()) {
-                            total3 += 1;
+                        int total3 = 0; // Variável para armazenar o total
+                        ResultSet pedidos3 = s.executeQuery("SELECT id FROM pedidos WHERE active = 2"); // Query para pegar os pedidos concluídos
+                        while (pedidos3.next()) { // Loop para contar os pedidos
+                            total3 += 1; // Conta os pedidos
                         }
-                        out.print(total3);
+                        out.print(total3); // Mostra o total
                         %>
                         </h1>
                     </div>
@@ -116,33 +117,32 @@
                         <h3>Pedidos em Andamento</h3>
                         <h1>
                             <%
-                        int total4 = 0;
-                        ResultSet pedidos4 = s.executeQuery("SELECT id FROM pedidos WHERE active = 1");
-                        while (pedidos4.next()) {
-                            total4 += 1;
+                        int total4 = 0; // Variável para armazenar o total
+                        ResultSet pedidos4 = s.executeQuery("SELECT id FROM pedidos WHERE active = 1"); // Query para pegar os pedidos em andamento
+                        while (pedidos4.next()) { // Loop para contar os pedidos
+                            total4 += 1; // Conta os pedidos
                         }
-                        out.print(total4);
-                        %>
+                        out.print(total4); // Mostra o total
+                        %> 
                         </h1>
                     </div>
                 </div>
             </div>
         </div>
-        
-        <!-- End of Analyses -->
+        <!-- Fim Analise -->
 
-        <!-- Recent Orders Table -->
-
+        <!-- Paginacao e Formulario  -->
         <div class="recent-orders" style="padding:10px">
             <!-- Botão para abrir o pop-up -->
             <h2>Pedidos Ativos<button id="openFormButton" class="btn btn-outline-primary" type="button"
                     style="margin-left: 15px; margin-bottom: 2px;">Adicionar</button></h2></div>
-                    
-                    <div class="pages">
-                        <% if (totalPages > 1) { %>
-                            <% if (page2 > 1) { %>
-                                <a href="?page=<%= page2 - 1 %>">Anterior</a>
-                            <% } %>
+                    <!-- Paginação -->
+                    <div class="pages">  
+
+                        <% if (totalPages > 1) { %> 
+                            <% if (page2 > 1) { %> 
+                                <a href="?page=<%= page2 - 1 %>">Anterior</a> 
+                            <% } // Verifica se há mais de uma página %>
             
                             <% for (int i = 1; i <= totalPages; i++) { %>
                                 <% if (i == page2) { %>
@@ -150,14 +150,15 @@
                                 <% } else { %>
                                     <a href="?page=<%= i %>"><%= i %></a>
                                 <% } %>
-                            <% } %>
+                            <% } // Loop para mostrar as páginas %>
             
                             <% if (page2 < totalPages) { %>
                                 <a href="?page=<%= page2 + 1 %>">Proximo</a>
                             <% } %>
-                        <% } %>
-                    </div>
+                        <% } // Verifica se há mais páginas %>
 
+                    </div>
+                    <!-- Fim da Paginação -->
         <div class="recent-orders">
             <!-- O pop-up (inicialmente oculto com display: none) -->
             <div id="opentesteform" class="popup" style="display: none;
@@ -266,20 +267,20 @@
                         <th>ID</th>
                         <th>CLIENTE</th>
                         <th>PRODUTO</th>
-                        <th>DESCRIÇÃO</th>
+                        <th>DESCRICAO</th>
                         <th>QUANTIDADE</th>
                         <th>VALOR</th>
                         <th></th>
                         <th></th>
                     </tr>
                 </thead>
+
                 <div>
                     <!-- Corpo da Tabela -->
                     <tbody>
                         <!-- Foreach para apresentar todos os resultados na tabela -->
                         <%
                          while (pedidosResult.next()) { %>
-                            <!-- Add the tbody tag here -->
                                 <tr>
                                     <td><%= pedidosResult.getInt("id") %></td>
                                     <td><%= pedidosResult.getString("cliente") %></td>
@@ -293,7 +294,7 @@
                                             <a style="text-decoration: none;" href="updatePage.jsp?id=<%= pedidosResult.getInt("id") %>">Editar</a>
                                     </td>
                                     <td>
-                                        <!-- Tornar o pedido inativo -->
+                                        <!-- Tornar o pedido inativo/concluido -->
                                         <form action="noactive" method="GET">
                                             <input type="hidden" name="id" value=<%= pedidosResult.getInt("id") %>>
                                             <button style="margin-left: -20px" type="submit"
@@ -301,26 +302,31 @@
 
                                         </form>
                                     </td>
-                                </tr> <!-- Add the closing tbody tag here -->
+                                </tr>
                         <% } %>
                     </tbody>
             </table>
             <!-- Fim da Tabela com Pedidos -->
-            <a href="historicoPedido.jsp" style="text-decoration: none;">Mostrar tudo</a>
+
+            <a href="historicoPedido.jsp" style="text-decoration: none;">Mostrar tudo</a> <!-- Link para mostrar todos os pedidos -->
         </div>
+
         <!-- Fim Pedidos Recentes -->
 
     </main>
     <!-- Fim do Main -->
 
     <!-- Conteudo da Direia -->
-
     <!-- Nome do Usuario + Cargo e Hora -->
         <!-- Perfil do Usuario -->
         <!-- Lembretes -->
-        <%@ include file="rightSection.jsp" %>
+        <%@ include file="WEB-INF/jspf/rightSection.jsp" %>
         <!-- Fim Perfil do Usuario -->
      <!-- Fim do Nome do Uusuario + Cargo e Hora  -->
 </body>
 
 </html>
+<% }
+else {
+    response.sendRedirect("index.jsp"); // Redireciona para a página de login
+} %>

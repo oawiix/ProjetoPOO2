@@ -1,7 +1,7 @@
 <%@ page import="java.sql.*" %>
 <%@ page import="java.util.Date" %>
 <%@ page import="model.conBd" %>
-
+<% if(session.getAttribute("tipo").equals("1")) { %>
 <% conBd conexao = new conBd();
         Connection conn = conexao.getConnection();
         Statement s = conn.createStatement(); %>
@@ -22,7 +22,7 @@
 
 <body>
 
-    <%@ include file="navbar.jsp" %>
+    <%@ include file="WEB-INF/jspf/navbar.jsp" %>
     <!-- End of Sidebar Section -->
 
     <!-- Main Content -->
@@ -51,7 +51,7 @@
                         <div class="user">
                             <h2><%= nome %></h2>
                             <p style="margin-top:3px"><%= cargo %></p>
-                            <p><h3>Data de Criação</h3> <%= data %></p>
+                            <p><h3>Data de Criacao</h3> <%= data %></p>
                         </div>
                     </div>
                 </div>
@@ -66,7 +66,11 @@
 
 
     <!-- Right Section -->
-    <%@ include file="rightSection.jsp" %>
+    <%@ include file="WEB-INF/jspf/rightSection.jsp" %>
 </body>
 
 </html>
+<% }
+else {
+    response.sendRedirect("dashboard.jsp");
+} %>

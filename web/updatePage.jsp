@@ -1,15 +1,23 @@
 <%@ page import="java.sql.*" %>
     <%@ page import="model.conBd" %>
+    <% if(session.getAttribute("nome") != null) { // Verifica se o usuário está logado %>
+        <% conBd conexao=new conBd(); // Instancia a conexão
+         Connection conn=conexao.getConnection(); // Pega a conexão
+         Statement s=conn.createStatement(); // Cria um statement %>  
 
-        <% conBd conexao=new conBd(); Connection conn=conexao.getConnection(); Statement s=conn.createStatement(); %>
-
-            <% int id=Integer.parseInt(request.getParameter("id")); String
-                countQuery="SELECT * FROM pedidos WHERE id = ?" ; PreparedStatement
-                countStmt=conn.prepareStatement(countQuery); countStmt.setInt(1, id); ResultSet
-                pedidosResult=countStmt.executeQuery(); pedidosResult.next(); int id2=pedidosResult.getInt(1); String
-                nome=pedidosResult.getString(2); String produto=pedidosResult.getString(3); String
-                descricao=pedidosResult.getString(4); int quantidade=pedidosResult.getInt(5); double
-                valor=pedidosResult.getDouble(6); %>
+            <% int id=Integer.parseInt(request.getParameter("id"));  // Pega o id do pedido
+                String countQuery="SELECT * FROM pedidos WHERE id = ?" ; // Query para pegar o pedido
+                PreparedStatement countStmt=conn.prepareStatement(countQuery); // Prepara a query
+                 countStmt.setInt(1, id); // Adiciona o id
+                ResultSet pedidosResult=countStmt.executeQuery(); // Executa a query
+                pedidosResult.next(); // Pega o resultado
+                int id2=pedidosResult.getInt(1);  // Pega o id
+                String nome=pedidosResult.getString(2);  // Pega o nome
+                String produto=pedidosResult.getString(3);    // Pega o produto
+                String descricao=pedidosResult.getString(4); // Pega a descrição
+                int quantidade=pedidosResult.getInt(5);  // Pega a quantidade
+                double valor=pedidosResult.getDouble(6); // Pega o valor
+                %> 
 
                 <head>
                     <meta charset="UTF-8">
@@ -25,10 +33,11 @@
                     <link rel="stylesheet" href="css/index.css">
                     <title>Editar | Projeto POO</title>
                 </head>
-                <%@ include file="navbar.jsp" %>
+                <%@ include file="WEB-INF/jspf/navbar.jsp" %> <!-- Inclui navbar -->
                     <style>
-                        input {
+                        .up form input {
                             margin-left: 20px;
+                            background-color: rgb(241, 241, 241);
                         }
                     </style>
                     <main>
@@ -39,23 +48,26 @@
                             </h2>
 
                             <!-- Formulário de edição do pedido -->
-                            <div>
-                                <form style=" margin-top: 150px; font-size: 25px; " action="updatePedido" method="POST">
+                            <div class="up" style="    background-color: var(--color-white);
+                            padding: var(--card-padding);
+                            box-shadow: var(--box-shadow);
+                            border-radius: var(--card-border-radius);">
+                                <form style=" margin-top: 125px; margin-bottom: 150px; font-size: 25px;" action="updatePedido" method="POST">
 
                                     <span style="margin-left: 25px;"><b>NOME</b></span>
-                                    <input type="text" name="nome" value="<%= nome %>" style="padding: 5px;"><br><br>
+                                    <input type="text" name="nome" value="<%= nome %>" style="padding: 5px; border-radius: 5px;"><br><br>
 
                                     <span style="margin-left: 25px;"><b>PRODUTO</b></span>
                                     <input type="text" name="produto" value="<%= produto %>"
-                                        style="padding: 5px;"><br><br>
+                                        style="padding: 5px;border-radius: 5px;"><br><br>
 
-                                    <span style="margin-left: 25px;"><b>DESCRIÇÃO</b></span>
+                                    <span style="margin-left: 25px;"><b>DESCRICAO</b></span>
                                     <input type="text" name="descricao" value="<%= descricao %>"
-                                        style="padding: 5px"><br><br>
+                                        style="padding: 5px;border-radius: 5px;"><br><br>
 
                                     <span style="margin-left: 25px;"><b>QUANTIDADE</b></span>
                                     <input type="number" name="quantidade" value="<%= quantidade %>" value="1" min="1"
-                                        style="padding: 5px;">
+                                        style="padding: 5px;border-radius: 5px;">
 
                                     <button id="incrementButton" class="btn btn-outline-primary" type="button"
                                         style="margin-left: 20px; padding: 10px">+</button>
@@ -70,7 +82,7 @@
                                     <span style="margin-left: 25px;"><b>VALOR</b><span
                                             style="margin-left: 30px">R$</span>
                                         <input type="number" step="0.01" name="valor" value="<%= valor %>"
-                                            style="padding: 5px;"><br><br>
+                                            style="padding: 5px;border-radius: 5px;"><br><br>
                                         <input type="hidden" name="id" value=<%=id %>>
 
                                         <a class="btn btn-danger" type="button" href="dashboard.jsp"
@@ -115,7 +127,11 @@
                             </div>
 
                     </main>
-                    <%@ include file="rightSection.jsp" %>
+                    <%@ include file="WEB-INF/jspf/rightSection.jsp" %> <!-- Inclui rightSection -->
                         </body>
 
                         </html>
+                        <% }
+else {
+    response.sendRedirect("index.jsp"); // Redireciona para a página de login
+} %>

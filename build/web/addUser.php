@@ -25,7 +25,8 @@ if ($id) {
     <link rel="stylesheet" href="css/index.css">
     <title>Editar | Projeto PHP</title>
 </head>
-<?php include 'navbar.php'; ?>
+
+<%@ include file="navbar.jsp" %>
 <style>
     input {
         margin-left: 20px;
@@ -76,5 +77,5 @@ if ($id) {
 
         </div>
 </main>
-<?php include 'rightSection.php'; ?>
+<%@ include file="rightSection.jsp" %>
 </body>
