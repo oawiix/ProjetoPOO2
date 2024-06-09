@@ -1,4 +1,8 @@
 # Projeto-POO
+
+1. Felipe Fernandes
+2. Julia Panaia
+   
 Gerenciamento de Pedidos de uma Gráfica
 <div>​​
 < img  src = " https://github.com/oawiix/Projeto-POO2/assets/163774293/b14df6e7-8650-448e-a887-cca8cb1ddb47 "  largura = " 650px " />
