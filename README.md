@@ -5,7 +5,7 @@
    
 Gerenciamento de Pedidos de uma Gráfica
 <div>​​
-< img  src = " https://github.com/oawiix/Projeto-POO2/assets/163774293/b14df6e7-8650-448e-a887-cca8cb1ddb47 "  largura = " 650px " />
+<img src = "https://github.com/oawiix/ProjetoPOO2/blob/main/img/grafica.jpg"  largura = "500px"/>
 </div>​​
 
 > [!NOTE]
