@@ -104,18 +104,19 @@ ao cliente
 -  [ ] Adicione prazer à experiência quando todas as tarefas forem concluídas : tada :
 
 > [!IMPORTANT]
+> Banco de Dados utilizado > MySQL
+> + Arquivo de configuração do Banco de Dados:
+> src/java/model/conBd.java
+>
 > Lib necessária para execução:
-> MySQL Connector/J
+> + MySQL Connector/J
 > https://dev.mysql.com/downloads/connector/j/
 > 
-> Banco de Dados utilizado > MySQL
-> Arquivo de configuração do Banco de Dados:
-> src/java/model/conBd.java
 > 
-> Linha de codigo para conexáo:
-> "jdbc:mysql://localhost:<<porta, normalmente 3306>>/<<nome do banco>>"
-> + "?user=<<usuario>>&password=<<senha, vazio caso não tenha sido definida>>";
+> Linha de codigo para conexão:
+> + "jdbc:mysql://localhost:<<porta, normalmente 3306>>/<<nome do banco>>" +
+> "?user=<<usuario>>&password=<<senha, vazio caso não tenha sido definida>>";
 >
 > Lib necessaria para Visual Code:
-> Javax Servlet Api 4.0.1
+> + Javax Servlet Api 4.0.1
 > https://mvnrepository.com/artifact/javax.servlet/javax.servlet-api/4.0.1
