@@ -102,3 +102,16 @@ ao cliente
 
 
 -  [ ] Adicione prazer à experiência quando todas as tarefas forem concluídas : tada :
+
+> [!IMPORTANT]
+> Lib necessária para execução:
+> MySQL Connector/J
+> https://dev.mysql.com/downloads/connector/j/
+> 
+> Banco de Dados utilizado > MySQL
+> Arquivo de configuração do Banco de Dados:
+> src/java/model/conBd.java
+> 
+> Linha de codigo para conexáo:
+> "jdbc:mysql://localhost:<<porta, normalmente 3306>>/<<nome do banco>>"
+> + "?user=<<usuario>>&password=<<senha, vazio caso não tenha sido definida>>";
