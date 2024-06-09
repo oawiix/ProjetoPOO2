@@ -195,9 +195,9 @@
 
                             <button id="decrementButton" class="btn btn-outline-primary" type="button">-</button>
 
-                            <button id="incrementButton10x" class="btn btn-outline-primary" type="button">+5</button>
+                            <button id="incrementButton5x" class="btn btn-outline-primary" type="button">+5</button>
 
-                            <button id="decrementButton10x" class="btn btn-outline-primary" type="button">-5</button><br>
+                            <button id="decrementButton5x" class="btn btn-outline-primary" type="button">-5</button><br>
 
                             <span style="margin-left: 25px;"><b>VALOR</b></span>
                             <input type="number" step="0.01" name="valor" placeholder="R$ "
@@ -212,7 +212,7 @@
                         <!-- Script para incremento e decremento da Quantidade -->
                         <script>
 
-                            document.getElementById('incrementButton10x').addEventListener('click', function () {
+                            document.getElementById('incrementButton5x').addEventListener('click', function () {
                                 for (var i = 0; i < 5; i++) {
                                     var input = document.getElementsByName('quantidade')[0];
                                     input.value++;
@@ -224,7 +224,7 @@
                                 input.value = parseInt(input.value) + 1;
                             });
 
-                            document.getElementById('decrementButton10x').addEventListener('click', function () {
+                            document.getElementById('decrementButton5x').addEventListener('click', function () {
                                 for (var i = 0; i < 5; i++) {
                                     var input = document.getElementsByName('quantidade')[0];
                                     if (input.value > 1)

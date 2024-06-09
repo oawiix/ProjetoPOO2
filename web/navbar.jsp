@@ -67,14 +67,14 @@
                     </span>
                     <h3>Config</h3>
                 </a> -->
-                <?php if($_SESSION['tipo'] == 1) { ?>
+                <% if(session.getAttribute("tipo").equals("1")) { %>
                 <a href="addUser.jsp">
                     <span class="material-icons-sharp">
                         add
                     </span>
                     <h3>Adicionar<br>Usuario</h3>
                 </a>
-                <?php }  ?>
+                <% }  %>
                 <a href="logout2" style="background-color: transparent; margin-top:12px" type="submit">
                     <span class="material-icons-sharp">
                         logout
