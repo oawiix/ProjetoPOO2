@@ -40,7 +40,7 @@
 </style>
 <main>
 
-    <h2><h1>Editando pedido</h1><h2>ID do Pedido: <%= id %> <%= id2 %></h2>
+    <h2><h1>Editando pedido</h1><h2>ID do Pedido: <%= id %></h2>
 
     <!-- Formulário de edição do pedido -->
     <div>
