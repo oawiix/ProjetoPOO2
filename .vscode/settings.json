@@ -1,0 +1,10 @@
+{
+    "java.project.sourcePaths": [
+        "src\\java"
+    ],
+    "java.project.referencedLibraries": [
+        "c:\\Users\\dange\\OneDrive\\Área de Trabalho\\mysql-connector-j-8.4.0\\mysql-connector-j-8.4.0.jar",
+        "c:\\Users\\dange\\OneDrive\\Área de Trabalho\\javax.servlet-api-4.0.1.jar",
+        "c:\\Users\\dange\\OneDrive\\Documents\\NetBeansProjects\\WebApplication9\\lib\\CopyLibs\\org-netbeans-modules-java-j2seproject-copylibstask.jar"
+    ]
+}
