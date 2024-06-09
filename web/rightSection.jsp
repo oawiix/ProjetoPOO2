@@ -2,12 +2,11 @@
         <div class="nav">
             <div class="profile">
                 <div class="info">
-                    <p>Ola, <b>
+                    <p>hoje<b><br>
                             <!-- Usuario  -->
-                            <?php echo $_SESSION["nome"] ?>
-                        </b></p>
-                    <!-- Hora -->
-                    <small class="text-muted"><?php echo date("Y-m-d"); ?></small>
+
+                            <!-- Hora -->
+                            <small class="text-muted"><%= java.time.LocalDate.now() %></small>
                 </div>
             </div>
         </div>
@@ -17,14 +16,17 @@
         <div style="margin-top:22px" class="user-profile">
             <div class="usuario-logado" style="margin-top:10px">
                 <!-- Usuario -->
+                <% String nome2 = (String) session.getAttribute("nome"); %>
                 <h2>
-                    <?php echo $_SESSION["nome"] ?>
+                    <%= nome2 %>
                 </h2>
                 <!-- Cargo -->
+                <% 
+                String modo = (String) session.getAttribute("tipo");
+                String modoText = modo.equals("1") ? "Administrador" : "Colaborador";
+                %>
                 <p>
-                    <?php $modo = $_SESSION["tipo"] == 1 ? "Administrador" : "Colaborador";
-                    echo $modo;
-                    ?>
+                    <%= modoText %>
                 </p>
             </div>
         </div>
@@ -92,3 +94,4 @@
 
         <!-- Fim Lembretes - Nao finalizado -->
         </section>
+
