@@ -3,9 +3,8 @@
 1. Felipe Fernandes
 2. Julia Panaia
    
-Gerenciamento de Pedidos de uma Gráfica
 <div>​​
-< img  src = " https://github.com/oawiix/Projeto-POO2/assets/163774293/b14df6e7-8650-448e-a887-cca8cb1ddb47 "  largura = " 650px " />
+<img src = "https://github.com/oawiix/ProjetoPOO2/blob/main/img/grafica.jpg"  largura = "500px"/>
 </div>​​
 
 > [!NOTE]
@@ -102,3 +101,21 @@ ao cliente
 
 
 -  [ ] Adicione prazer à experiência quando todas as tarefas forem concluídas : tada :
+
+> [!IMPORTANT]
+> Banco de Dados utilizado > MySQL
+> + Arquivo de configuração do Banco de Dados:
+> src/java/model/conBd.java
+>
+> Lib necessária para execução:
+> + MySQL Connector/J
+> https://dev.mysql.com/downloads/connector/j/
+> 
+> 
+> Linha de codigo para conexão:
+> + "jdbc:mysql://localhost:<<porta, normalmente 3306>>/<<nome do banco>>" +
+> "?user=<<usuario>>&password=<<senha, vazio caso não tenha sido definida>>";
+>
+> Lib necessaria para Visual Code:
+> + Javax Servlet Api 4.0.1
+> https://mvnrepository.com/artifact/javax.servlet/javax.servlet-api/4.0.1
