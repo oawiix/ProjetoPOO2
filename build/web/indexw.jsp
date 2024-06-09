@@ -8,7 +8,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
     <link rel="stylesheet" href="css/login.css">
-    <title>Login | Projeto PHP</title>
+    <title>Login | Projeto POO</title>
 </head>
 
 <body>
@@ -16,14 +16,14 @@
     
     <div class="container" id="container">
         <div class="form-container sign-in">
-            <form action="login.php" method="POST">
+            <form action="login" method="POST">
                 <h1>Identifique-se</h1>
                 <span>Insira um nome de usuario</span><br>
                 <input type="text" id="formName" name="usuario" placeholder="Nome de Usuario">
                 <input type="password" id="formName" name="senha" placeholder="Senha">
                 <button type="submit" class="btn btn-outline-primary" style="padding:10px; padding-left: 120px; padding-right:120px; font-size:15px; margin-bottom: 8px; margin-top: 7px" > Entrar </button>
                 <span style="padding:12px; padding-left: 37px; padding-right:37px; font-size:15px; background-color:crimson; color:white; border-radius: 9px; ">Usuario e/ou senha invalidos</span>
-                <p>Pagina após Logins</p>
+                <p>Pagina apos Logins</p>
                 <select name="escolha" id="escolha" style="border-radius: 5px; padding:5px">
                     <option value="1">Dashboard</option>
                     <option value="2">Historico</option>
