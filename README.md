@@ -76,11 +76,11 @@ ao cliente
 
 **Qualidade do Código**
 
--  [ ] Legibilidade: Facilidade de leitura e compreensão do código.
+-  [x] Legibilidade: Facilidade de leitura e compreensão do código.
 
--  [ ] Organização: Estruturação adequada em classes, métodos e pacotes.
+-  [x] Organização: Estruturação adequada em classes, métodos e pacotes.
 
--  [ ] Comentários: Comentários úteis e descritivos são incluídos.
+-  [x] Comentários: Comentários úteis e descritivos são incluídos.
 
 **Documentação** 
 -  [x] Documentação Externa: Leiame detalhado sobre como executar o projeto.
@@ -95,9 +95,9 @@ ao cliente
 
 **Individuais**  
 
--  [ ] Participação e Contribuição: Engajamento individual no projeto, contribuição no Github.
+-  [x] Participação e Contribuição: Engajamento individual no projeto, contribuição no Github.
 
--  [ ] Eficiência na comunicação com a equipe e apresentação do projeto.
+-  [x] Eficiência na comunicação com a equipe e apresentação do projeto.
 
 
 -  [ ] Adicione prazer à experiência quando todas as tarefas forem concluídas : tada :
