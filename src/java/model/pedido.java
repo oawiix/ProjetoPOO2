@@ -13,15 +13,8 @@ public class pedido extends conBd{
     private int quantidade;
     private double valor;
     private int active;
-    private String servername = "localhost";
-    private String username = "root";
-    private String password = "";
-    private String dbname = "zteste";
 
-    public pedido() {
-        // Create an instance of the conBd class
-        conBd conBd = new conBd();
-
+    public pedido() throws Exception {
         // Get the connection object
         this.conn = conBd.getConnection();
     }

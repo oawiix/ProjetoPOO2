@@ -16,7 +16,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Sharp" rel="stylesheet">
     <link rel="stylesheet" href="css/index.css">
-    <title>Painel | Projeto PHP</title>
+    <title>Historico | Projeto POO</title>
 </head>
 
 <body>
@@ -122,8 +122,8 @@
                                     </td>
                                     <td>
                                         <!-- Tornar o pedido inativo -->
-                                        <form action="noactivepedido.php" method="GET">
-                                            <input type="hidden" name="id" value="">
+                                        <form action="delete" method="GET">
+                                            <input type="hidden" name="id" value=<%= pedidosResult.getInt("id") %>>
                                             <button style="margin-left: -20px" type="submit"
                                                 class="btn btn-success">Concluir</button>
 

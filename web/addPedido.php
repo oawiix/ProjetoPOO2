@@ -1,27 +1,31 @@
-<?php
+import java.io.IOException;
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    require_once 'class/Pedido.php';
-    $pedido = new Pedido();
+public class AddPedidoServlet extends HttpServlet {
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        Pedido pedido = new Pedido();
 
-    // Obtém os valores enviados pelo formulário
-    $cliente = $_POST['nome'];
-    $produto = $_POST['produto'];
-    $descricao = $_POST['descricao'];
-    $quantidade = $_POST['quantidade'];
-    $valor = $_POST['valor'];
+        // Obtém os valores enviados pelo formulário
+        String cliente = request.getParameter("nome");
+        String produto = request.getParameter("produto");
+        String descricao = request.getParameter("descricao");
+        int quantidade = Integer.parseInt(request.getParameter("quantidade"));
+        double valor = Double.parseDouble(request.getParameter("valor"));
 
-    // Define os valores do pedido
-    $pedido->setCliente($cliente);
-    $pedido->setProduto($produto);
-    $pedido->setDescricao($descricao);
-    $pedido->setQuantidade($quantidade);
-    $pedido->setValor($valor);
+        // Define os valores do pedido
+        pedido.setCliente(cliente);
+        pedido.setProduto(produto);
+        pedido.setDescricao(descricao);
+        pedido.setQuantidade(quantidade);
+        pedido.setValor(valor);
 
-    // Salva o pedido
-    $pedido->save();
+        // Salva o pedido
+        pedido.save();
 
-    // Redireciona para a página de dashboard
-    header('Location: dashboard.php');
+        // Redireciona para a página de dashboard
+        response.sendRedirect("dashboard.jsp");
+    }
 }
-?>

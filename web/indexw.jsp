@@ -16,7 +16,7 @@
     
     <div class="container" id="container">
         <div class="form-container sign-in">
-            <form action="loginform" method="POST">
+            <form action="login2" method="POST">
                 <h1>Identifique-se</h1>
                 <span>Insira um nome de usuario</span><br>
                 <input type="text" id="formName" name="usuario" placeholder="Nome de Usuario">

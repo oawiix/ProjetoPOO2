@@ -4,12 +4,7 @@
  */
 
 import java.io.IOException;
-import java.io.PrintWriter;
-import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
-
+import java.sql.*;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -18,13 +13,12 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import test.AppListener;
-import javax.servlet.http.HttpSession;
 
 /**
  *
  * @author dange
  */
-@WebServlet(urlPatterns = {"/loginform"})
+@WebServlet(urlPatterns = {"/login2"})
 public class login extends HttpServlet {
 
     /**

@@ -1,8 +1,10 @@
 <%@ page import="java.sql.*" %>
 <%@ page import="java.util.Date" %>
+<%@ page import="model.conBd" %>
 <%@ page import="test.AppListener" %>
-<% AppListener appListener = new AppListener();
-        Connection conn = appListener.getConnection();
+
+<% conBd conexao = new conBd();
+        Connection conn = conexao.getConnection();
         Statement s = conn.createStatement(); %>
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -173,7 +175,7 @@
                 <div>
                     <div>
                         <!-- Formulario para adicionar um novo produto -->
-                        <form id="testeform" action="addpedido.php" method="POST">
+                        <form id="testeform" action="addPedido" method="POST">
                             <h1>Adicionar um novo produto</h1>
                             <span style="margin-left: 25px;"><b>NOME</b></span>
                             <input type="text" name="nome" placeholder="Nome do Cliente" style="padding: 15px;"
@@ -192,14 +194,11 @@
                             <button id="incrementButton" class="btn btn-outline-primary" type="button"
                                 style="margin-left:25px;">+</button>
 
-                            <button id="decrementButton" class="btn btn-outline-primary" type="button"
-                                style="">-</button>
+                            <button id="decrementButton" class="btn btn-outline-primary" type="button">-</button>
 
-                            <button id="incrementButton10x" class="btn btn-outline-primary" type="button"
-                                style="">+5</button>
+                            <button id="incrementButton10x" class="btn btn-outline-primary" type="button">+5</button>
 
-                            <button id="decrementButton10x" class="btn btn-outline-primary" type="button"
-                                style="">-5</button><br>
+                            <button id="decrementButton10x" class="btn btn-outline-primary" type="button">-5</button><br>
 
                             <span style="margin-left: 25px;"><b>VALOR</b></span>
                             <input type="number" step="0.01" name="valor" placeholder="R$ "
@@ -296,8 +295,8 @@
                                     </td>
                                     <td>
                                         <!-- Tornar o pedido inativo -->
-                                        <form action="noactivepedido.php" method="GET">
-                                            <input type="hidden" name="id" value="">
+                                        <form action="noactive" method="GET">
+                                            <input type="hidden" name="id" value=<%= pedidosResult.getInt("id") %>>
                                             <button style="margin-left: -20px" type="submit"
                                                 class="btn btn-success">Concluir</button>
 

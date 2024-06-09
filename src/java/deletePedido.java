@@ -4,20 +4,23 @@
  */
 
 import java.io.IOException;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 
 /**
  *
  * @author dange
  */
-@WebServlet(urlPatterns = {"/logout"})
-public class logout extends HttpServlet {
+
+import model.pedido;
+
+@WebServlet(urlPatterns = {"/delete"})
+public class deletePedido extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -33,17 +36,23 @@ public class logout extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {      HttpSession session = request.getSession();
-        
-                session.removeAttribute("usuario"); // Remove the session attribute "usuario"
-                session.removeAttribute("nome"); // Remove the session attribute "nome"
-                session.removeAttribute("tipo"); // Remove the session attribute "tipo"
+            throws ServletException, IOException {             
                 
-                session.invalidate(); // Invalidate the session
-                
-                response.sendRedirect("index.jsp"); // Redirect to the "index.jsp" page
+        if (request.getMethod().equals("GET") && request.getParameter("id") != null) {
+            response.sendRedirect("historicoPedido.jsp");
+            pedido pedido;
+            try {
+                pedido = new pedido();
+                int id = Integer.parseInt(request.getParameter("id"));
+                pedido.setId(id);
+                pedido.delete();
+            } catch (Exception e) {
+                // TODO Auto-generated catch block
+                e.printStackTrace();
+            } finally {
+                // Add your finally block code here
             }
-        
+        }}
         
     
 

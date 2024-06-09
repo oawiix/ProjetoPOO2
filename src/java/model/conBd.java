@@ -2,25 +2,18 @@ package model;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
-import java.sql.SQLException;
+import javax.servlet.ServletContextListener;
 
-public class conBd {
-    private Connection conn;
-    private String servername = "localhost";
-    private String username = "root";
-    private String password = "";
-    private String dbname = "zteste";
+public class conBd implements ServletContextListener {
+    public static final String CLASS_NAME = "com.mysql.jdbc.Driver";
+    public static final String URL = "jdbc:mysql://localhost:3306/zteste"
+    + "?user=root&password=";
+    public static String initializeLog = "";
+    public static Exception exception = null;
 
-    public conBd() {
-        try {
-            conn = DriverManager.getConnection("jdbc:mysql://" + servername + "/" + dbname, username, password);
-            System.out.println("Conectado com sucesso, Banco de Dados: " + dbname);
-        } catch (SQLException e) {
-            System.out.println("Falha na conexão, erro: " + e.getMessage());
-        }
-    }
-
-    public Connection getConnection() {
-        return conn;
+    
+    public static Connection getConnection() throws Exception {
+        Class.forName(CLASS_NAME);
+        return DriverManager.getConnection(URL);
     }
 }
