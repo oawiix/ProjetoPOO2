@@ -75,7 +75,7 @@
                     <h3>Adicionar<br>Usuario</h3>
                 </a>
                 <?php }  ?>
-                <a href="logout" style="background-color: transparent; margin-top:12px" type="submit">
+                <a href="logout2" style="background-color: transparent; margin-top:12px" type="submit">
                     <span class="material-icons-sharp">
                         logout
                     </span>

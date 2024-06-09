@@ -1,29 +1,34 @@
-<?php
 
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    require_once 'class/Pedido.php';
-    $pedido = new Pedido();
+import java.io.IOException;
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
-    // Obtém os valores enviados pelo formulário
-    $cliente = $_POST['nome'];
-    $produto = $_POST['produto'];
-    $descricao = $_POST['descricao'];
-    $quantidade = $_POST['quantidade'];
-    $valor = $_POST['valor'];
-    $id = $_POST['id'];
+public class UpdatePedidoServlet extends HttpServlet {
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        Pedido pedido = new Pedido();
 
-    // Define os valores do objeto Pedido
-    $pedido->setCliente($cliente);
-    $pedido->setProduto($produto);
-    $pedido->setDescricao($descricao);
-    $pedido->setQuantidade($quantidade);
-    $pedido->setValor($valor);
-    $pedido->setId($id);
+        // Obtém os valores enviados pelo formulário
+        String cliente = request.getParameter("nome");
+        String produto = request.getParameter("produto");
+        String descricao = request.getParameter("descricao");
+        int quantidade = Integer.parseInt(request.getParameter("quantidade"));
+        double valor = Double.parseDouble(request.getParameter("valor"));
+        int id = Integer.parseInt(request.getParameter("id"));
 
-    // Chama o método de atualização do pedido
-    $pedido->update();
+        // Define os valores do objeto Pedido
+        pedido.setCliente(cliente);
+        pedido.setProduto(produto);
+        pedido.setDescricao(descricao);
+        pedido.setQuantidade(quantidade);
+        pedido.setValor(valor);
+        pedido.setId(id);
 
-    // Redireciona para a página de dashboard após a atualização
-    header('Location: dashboard.php');
+        // Chama o método de atualização do pedido
+        pedido.update();
+
+        // Redireciona para a página de dashboard após a atualização
+        response.sendRedirect("dashboard.jsp");
+    }
 }
-?>

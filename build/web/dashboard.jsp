@@ -1,7 +1,6 @@
 <%@ page import="java.sql.*" %>
 <%@ page import="java.util.Date" %>
 <%@ page import="model.conBd" %>
-<%@ page import="test.AppListener" %>
 
 <% conBd conexao = new conBd();
         Connection conn = conexao.getConnection();
@@ -291,7 +290,7 @@
                                     <td>
                                         <!-- Edicao do Conetudo -->
                                         <a style="text-decoration: none;"
-                                            href="updatepage.php?id=<?= $pedido['id'] ?>">Editar</a>
+                                            <a style="text-decoration: none;" href="updatePage.jsp?id=<%= pedidosResult.getInt("id") %>">Editar</a>
                                     </td>
                                     <td>
                                         <!-- Tornar o pedido inativo -->

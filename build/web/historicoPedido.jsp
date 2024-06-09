@@ -116,16 +116,11 @@
                                     <td><%= pedidosResult.getInt("quantidade") %></td>
                                     <td><b>R$: </b> <%= pedidosResult.getDouble("valor") %></td>
                                     <td>
-                                        <!-- Edicao do Conetudo -->
-                                        <a style="text-decoration: none;"
-                                            href="updatepage.php?id=<?= $pedido['id'] ?>">Editar</a>
-                                    </td>
-                                    <td>
                                         <!-- Tornar o pedido inativo -->
                                         <form action="delete" method="GET">
                                             <input type="hidden" name="id" value=<%= pedidosResult.getInt("id") %>>
                                             <button style="margin-left: -20px" type="submit"
-                                                class="btn btn-success">Concluir</button>
+                                                class="btn btn-danger">Excluir</button>
 
                                         </form>
                                     </td>

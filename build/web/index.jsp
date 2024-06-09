@@ -1,4 +1,4 @@
-<?php include 'conexao.php'; ?>
+
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -48,6 +48,5 @@
         </div>
     </div>
     <br>
-    <?= $msgCon ?>
 </body>
 </html>
