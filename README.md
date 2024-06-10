@@ -68,9 +68,9 @@ ao cliente
 
 **Funcionalidades**
 
--  [ ] Conformidade com Requisitos: Verifique se todas as funcionalidades foram inovadoras.
+-  [x] Conformidade com Requisitos: Verifique se todas as funcionalidades foram inovadoras.
 
--  [ ] Corretudo do Código: Garantir que o programa execute sem erros e bugs.
+-  [x] Corretudo do Código: Garantir que o programa execute sem erros e bugs.
 
 -  [ ] Robustez: Resiliência contra entradas inválidas ou inesperadas.
 
@@ -91,7 +91,7 @@ ao cliente
 
 -  [ ] Performance: Análise de tempo de execução e uso de memória.
 
--  [ ] Uso do Github: Histórico de commits bem estruturado.
+-  [x] Uso do Github: Histórico de commits bem estruturado.
 
 **Individuais**  
 
