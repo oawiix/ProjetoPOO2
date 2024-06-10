@@ -1,4 +1,5 @@
 package action;
+
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Servlet.java to edit this template
@@ -21,8 +22,8 @@ import model.pedido;
 public class activePedido extends HttpServlet {
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-            throws Exception {}
-
+            throws Exception {
+    }
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
@@ -39,9 +40,7 @@ public class activePedido extends HttpServlet {
             }
         }
     }
-    
-        
-                
+
     @Override
     public String getServletInfo() {
         return "Short description";

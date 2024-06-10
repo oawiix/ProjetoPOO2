@@ -12,36 +12,58 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import model.usuarios;
+@WebServlet(urlPatterns = {"/addUsuarios"})
+public class addUsuarios extends HttpServlet {
 
-/**
- *
- * @author dange
- */
-@WebServlet(urlPatterns = {"/noactive"})
-public class activeUsuarios extends HttpServlet {
-
+    /**
+     * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
+     * methods.
+     *
+     * @param request servlet request
+     * @param response servlet response
+     * @throws Exception 
+     */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws Exception {}
 
 
     @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
+    protected void doPost(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException { 
+                try {
+                    usuarios usuarios = new usuarios();
 
-        if (request.getMethod().equals("GET") && request.getParameter("id") != null) {
-            try {
-                usuarios usuarios = new usuarios();
-                int id = Integer.parseInt(request.getParameter("id"));
-                usuarios.noActive(id);
-                response.sendRedirect("dashboard.jsp");
-            } catch (Exception e) {
-                // Handle the exception here
+                    // Obtém os valores enviados pelo formulário
+                    String cliente = request.getParameter("nome");
+                    String email = request.getParameter("email");
+                    String usuario = request.getParameter("usuario");
+                    String senha = request.getParameter("senha");
+                    String tipo = request.getParameter("tipo"));
+                    String data = request.getParameter("data"));
+
+                    // Define os valores do usuário
+                    usuarios.setNome(nome);
+                    usuarios.setEmail(email);
+                    usuarios.setUsuario(usuario);
+                    usuarios.setSenha(senha);
+                    usuarios.setTipo(tipo);
+                    usuarios.setData(data);
+
+                    // Salva o usuario
+                    usuarios.save();
+
+                    // Redireciona para a página de dashboard
+                    response.sendRedirect("dashboard.jsp");
+                } catch (Exception e) {
+                    // Handle the exception here
+                    e.printStackTrace();
+                }
             }
-        }
-    }
-    
-        
-                
+    /**
+     * Returns a short description of the servlet.
+     *
+     * @return a String containing servlet description
+     */
     @Override
     public String getServletInfo() {
         return "Short description";

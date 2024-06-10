@@ -4,7 +4,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
-public class usuarios extends conBd{
+public class usuarios extends conBd {
+
     private Connection conn;
     private int id;
     private String nome;
@@ -28,7 +29,7 @@ public class usuarios extends conBd{
     }
 
     public void setEmail(String email) {
-        this.email= email;
+        this.email = email;
     }
 
     public String getEmail() {
@@ -55,7 +56,7 @@ public class usuarios extends conBd{
         this.tipo = tipo;
     }
 
-     public String getTipo() {
+    public String getTipo() {
         return this.tipo;
     }
 
@@ -67,9 +68,7 @@ public class usuarios extends conBd{
         return this.id;
     }
 
-
     // Outros métodos da classe...
-
     public void save() throws SQLException {
         // Salvar o usuário no banco de dados
         String sql = "INSERT INTO pedidos (nome, email, usuario, senha, tipo, data) VALUES (?, ?, ?, ?, ?,?)";
