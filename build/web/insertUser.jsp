@@ -1,25 +1,3 @@
-<%@ page import="java.sql.*" %>
-<%@ page import="model.conBd" %>
-<% if (session.getAttribute("nome") != null) { // Verifica se o usuário está logado %>
-<% conBd conexao=new conBd(); // Instancia a conexão
-            Connection conn = conexao.getConnection(); // Pega a conexão
-            Statement s = conn.createStatement(); // Cria um statement %>  
-
-<% int id=Integer.parseInt(request.getParameter("id"));  // Pega o id do pedido
-    String countQuery = "SELECT * FROM usuarios WHERE id = ?"; // Query para pegar o pedido
-    PreparedStatement countStmt = conn.prepareStatement(countQuery); // Prepara a query
-    countStmt.setInt(1, id); // Adiciona o id
-    ResultSet usuariosResult = countStmt.executeQuery(); // Executa a query
-    usuariosResult.next(); // Pega o resultado
-    int id3 = Result.getInt(1);  // Pega o id
-    String nome = usuariosResult.getString(2);  // insere o nome
-    String email = usuariosResult.getString(3);    // insere email
-    String usuario = usuariosResult.getString(4); // insere usuario
-    int senha = usuariosResult.getInt(5);  // insere a senha
-    String tipo = usuariosResult.getString(6); // insere tipo
-    int data = usuariosResult.getInt(7); // insere a data
-               %>  
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -53,7 +31,7 @@
              padding: var(--card-padding);
              box-shadow: var(--box-shadow);
              border-radius: var(--card-border-radius);">
-            <form style=" margin-top: 125px; margin-bottom: 150px; font-size: 25px;" action="updatePedido" method="POST">
+            <form style=" margin-top: 125px; margin-bottom: 150px; font-size: 25px;" action="updateUsuarios" method="POST">
 
                 <span style="margin-left: 25px;"><b>NOME</b></span>
                 <input type="text" name="nome" value="<%= nome%>" style="padding: 5px; border-radius: 5px;"><br><br>

@@ -17,15 +17,15 @@
         <div class="form-container sign-in">
             <form action="login2" method="POST">
                 <h1>Identifique-se</h1>
-                <span>Insira um nome de usuario</span><br>
+                <span>Insira um nome de usuário</span><br>
                 <input type="text" id="formName" name="usuario" placeholder="Nome de Usuario">
                 <input type="password" id="formName" name="senha" placeholder="Senha">
                 <button type="submit" class="btn btn-outline-primary" style="padding:10px; padding-left: 120px; padding-right:120px; font-size:15px; margin-top: 7px" > Entrar </button>
-                <p>Pagina apos Login</p>
+                <p>Página após Login</p>
                 <select name="escolha" id="escolha" style="border-radius: 5px; padding:5px">
                     <option value="1">Dashboard</option>
-                    <option value="2">Historico</option>
-                    <option value="3">Usuarios</option>
+                    <option value="2">Histórico</option>
+                    <option value="3">Usuários</option>
                 </select>
             </form>
         </div>
@@ -39,7 +39,7 @@
                       <br>
                     <h1 style="font-weight: 800;">Projeto POO</h1>
                     <p style="color: white;">Gerenciamento de Pedidos<br>
-                        <b style="color: white;">GRAFICA</b></p>
+                        <b style="color: white;">GRÁFICA</b></p>
                     <p style="margin-bottom: -100px;
                     margin-top: 60px;">
                     <b style="color: white;">Felipe | Julia</b></p>  

@@ -26,8 +26,8 @@
                 <p>Pagina apos Logins</p>
                 <select name="escolha" id="escolha" style="border-radius: 5px; padding:5px">
                     <option value="1">Dashboard</option>
-                    <option value="2">Historico</option>
-                    <option value="3">Usuarios</option>
+                    <option value="2">Histórico</option>
+                    <option value="3">Usuários</option>
                 </select>
             </form>
         </div>

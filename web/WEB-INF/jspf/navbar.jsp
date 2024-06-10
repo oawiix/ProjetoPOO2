@@ -40,7 +40,7 @@
                     <span class="material-icons-sharp">
                         person_outline
                     </span>
-                    <h3>Usuarios</h3>
+                    <h3>Usuários</h3>
                 </a>
                 <% } %>
                     <!-- <a href="#">
@@ -70,7 +70,7 @@
                             <span class="material-icons-sharp">
                                 add
                             </span>
-                            <h3>Adicionar<br>Usuario</h3>
+                            <h3>Adicionar<br>Usuário</h3>
                         </a>
                         <% } %>
                             <a href="logout2" style="background-color: transparent; margin-top:12px" type="submit">

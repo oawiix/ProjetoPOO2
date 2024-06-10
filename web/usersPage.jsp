@@ -40,10 +40,10 @@
             <%
             ResultSet usuarios = conn.createStatement().executeQuery("SELECT * FROM usuarios ORDER BY id DESC");
             while (usuarios.next()) {
-                String nome = usuarios.getString("nome");
-                int tipo = usuarios.getInt("tipo");
+                String nome = usuarios.getString("Nome");
+                int tipo = usuarios.getInt("Tipo");
                 String cargo = tipo == 1 ? "Administrador" : "Colaborador";
-                String data = usuarios.getString("data");
+                String data = usuarios.getString("Data");
             %>
             <div class="col-md-4">
                 <div class="new-users">
@@ -51,7 +51,7 @@
                         <div class="user">
                             <h2><%= nome %></h2>
                             <p style="margin-top:3px"><%= cargo %></p>
-                            <p><h3>Data de Criacao</h3> <%= data %></p>
+                            <p><h3>Data de Criação</h3> <%= data %></p>
                         </div>
                     </div>
                 </div>
