@@ -34,26 +34,26 @@
             <form style=" margin-top: 125px; margin-bottom: 150px; font-size: 25px;" action="updateUsuarios" method="POST">
 
                 <span style="margin-left: 25px;"><b>NOME</b></span>
-                <input type="text" name="nome" value="<%= nome%>" style="padding: 5px; border-radius: 5px;"><br><br>
+                <input type="text" name="nome" value="<%=%>" style="padding: 5px; border-radius: 5px;"><br><br>
 
                 <span style="margin-left: 25px;"><b>EMAIL</b></span>
-                <input type="text" name="email" value="<%= email%>"
+                <input type="text" name="email" value="<%=%>"
                        style="padding: 5px;border-radius: 5px;"><br><br>
 
                 <span style="margin-left: 25px;"><b>USUARIO</b></span>
-                <input type="text" name="usuario" value="<%=usuario%>"
+                <input type="text" name="usuario" value="<%=%>"
                        style="padding: 5px;border-radius: 5px;"><br><br>
 
                 <span style="margin-left: 25px;"><b>SENHA</b></span>
-                <input type="number" name="senha" value="<%=senha%>" value="1" min="1"
+                <input type="number" name="senha" value="<%=%>" value="1" min="1"
                        style="padding: 5px;border-radius: 5px;">
 
                 <span style="margin-left: 25px;"><b>TIPO</b></span>
-                <input type="number" name="tipo" value="<%=tipo%>" value="1" min="1"
+                <input type="number" name="tipo" value="<%=%>" value="1" min="1"
                        style="padding: 5px;border-radius: 5px;">
 
                 <span style="margin-left: 25px;"><b>DATA</b></span>
-                <input type="number" name="data" value="<%=data%>" value="1" min="1"
+                <input type="number" name="data" value="<%=%>" value="1" min="1"
                        style="padding: 5px;border-radius: 5px;">
 
                 <button id="incrementButton" class="btn btn-outline-primary" type="button"
