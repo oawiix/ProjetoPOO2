@@ -13,7 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import model.usuarios;
 @WebServlet(urlPatterns = {"/addUsuarios"})
-public class addUsuarios extends HttpServlet {
+public class activeUsuarios extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
