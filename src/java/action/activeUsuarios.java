@@ -12,7 +12,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import model.usuarios;
-@WebServlet(urlPatterns = {"/addUsuarios"})
+@WebServlet(urlPatterns = {"/activeUsuarios"})
 public class activeUsuarios extends HttpServlet {
 
     /**
