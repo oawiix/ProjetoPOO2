@@ -10,7 +10,7 @@
           href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Sharp" rel="stylesheet">
     <link rel="stylesheet" href="css/index.css">
-    <title>Adicionar Usuário | Projeto POO</title>
+    <title>Adicionar Usuários | Projeto POO</title>
 </head>
 <%@ include file="WEB-INF/jspf/navbar.jsp" %> <!-- Inclui navbar -->
 <style>
@@ -23,7 +23,7 @@
 
     <h2>
         <h1>Adicionando Usuário</h1>
-        <h2>ID do Pedido: <%= id%>
+        <h2>ID do Pedido: <%= %>
         </h2>
 
         <!-- FormulÃ¡rio de adicionar o usuário -->
@@ -68,7 +68,7 @@
 
 
                 style="padding: 5px;border-radius: 5px;"><br><br>
-                <input type="hidden" name="id" value=<%=id%>>
+                <input type="hidden" name="id" value=<%=%>>
 
                 <a class="btn btn-danger" type="button" href="dashboard.jsp"
                    style="padding: 15px; padding-left: 40px; padding-right: 40px; margin-left: 25px; margin-top: 25px;">Cancelar</a>
@@ -83,6 +83,3 @@
 </body>
 
 </html>
-<% } else {
-        response.sendRedirect("index.jsp"); // Redireciona para a pÃ¡gina de login
-    }%>
