@@ -34,12 +34,12 @@ public class addUsuarios extends HttpServlet {
                     usuarios usuarios = new usuarios();
 
                     // Obtém os valores enviados pelo formulário
-                    String cliente = request.getParameter("nome");
+                    String nome = request.getParameter("nome");
                     String email = request.getParameter("email");
                     String usuario = request.getParameter("usuario");
                     String senha = request.getParameter("senha");
-                    String tipo = request.getParameter("tipo"));
-                    String data = request.getParameter("data"));
+                    String tipo = request.getParameter("tipo");
+                    String data = request.getParameter("data");
 
                     // Define os valores do usuário
                     usuarios.setNome(nome);
