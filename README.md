@@ -100,8 +100,6 @@ ao cliente
 -  [x] Eficiência na comunicação com a equipe e apresentação do projeto.
 
 
--  [ ] Adicione prazer à experiência quando todas as tarefas forem concluídas : tada :
-
 > [!IMPORTANT]
 > Banco de Dados utilizado > MySQL
 > + Arquivo de configuração do Banco de Dados:
