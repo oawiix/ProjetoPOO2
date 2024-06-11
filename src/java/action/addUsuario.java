@@ -11,9 +11,10 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import model.usuarios;
-@WebServlet(urlPatterns = {"/activeUsuarios"})
-public class activeUsuarios extends HttpServlet {
+import model.usuario;
+
+@WebServlet(urlPatterns = {"/addusuario"})
+public class addUsuario extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -31,7 +32,7 @@ public class activeUsuarios extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException { 
                 try {
-                    usuarios usuarios = new usuarios();
+                    usuario user = new usuario();
 
                     // Obtém os valores enviados pelo formulário
                     String nome = request.getParameter("nome");
@@ -41,19 +42,19 @@ public class activeUsuarios extends HttpServlet {
                     String tipo = request.getParameter("tipo");
                     String data = request.getParameter("data");
 
-                    // Define os valores do usuário
-                    usuarios.setNome(nome);
-                    usuarios.setEmail(email);
-                    usuarios.setUsuario(usuario);
-                    usuarios.setSenha(senha);
-                    usuarios.setTipo(tipo);
-                    usuarios.setData(data);
+                    // Define os valores do usuario
+                    user.setNome(nome);
+                    user.setEmail(email);
+                    user.setUsuario(usuario);
+                    user.setSenha(senha);
+                    user.setTipo(tipo);
+                    user.setData(data);
 
                     // Salva o usuario
-                    usuarios.save();
+                    user.save();
 
                     // Redireciona para a página de dashboard
-                    response.sendRedirect("dashboard.jsp");
+                    response.sendRedirect("usersPage.jsp");
                 } catch (Exception e) {
                     // Handle the exception here
                     e.printStackTrace();

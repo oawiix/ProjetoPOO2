@@ -10,7 +10,7 @@
           href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Sharp" rel="stylesheet">
     <link rel="stylesheet" href="css/index.css">
-    <title>Adicionar Usuários | Projeto POO</title>
+    <title>Adicionar Usuï¿½rios | Projeto POO</title>
 </head>
 <%@ include file="WEB-INF/jspf/navbar.jsp" %> <!-- Inclui navbar -->
 <style>
@@ -22,11 +22,11 @@
 <main>
 
     <h2>
-        <h1>Adicionando Usuário</h1>
-        <h2>ID do Pedido: <%= %>
+        <h1>Adicionando Usuï¿½rio</h1>
+        <h2>ID do Pedido: 
         </h2>
 
-        <!-- FormulÃ¡rio de adicionar o usuário -->
+        <!-- FormulÃ¡rio de adicionar o usuï¿½rio -->
         <div class="up" style="    background-color: var(--color-white);
              padding: var(--card-padding);
              box-shadow: var(--box-shadow);

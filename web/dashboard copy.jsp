@@ -28,32 +28,17 @@
         <%@ include file="WEB-INF/jspf/navbar.jsp" %> <!-- Inclui a navbar -->
         <%
             int page2 = request.getParameter("page") != null ? Integer.parseInt(request.getParameter("page")) : 1; // Pega o valor da página
-            String pesquisaAtivo = request.getParameter("pesquisaAtivo"); // Recebe o valor de pesquisaAtivo via GET   
             int limit = 7; // Define o limite de pedidos por página
-            if (pesquisaAtivo != null && !pesquisaAtivo.isEmpty()) {
-            limit = 6; // Define o limite de pedidos por página
-            }
             int offset = (page2 - 1) * limit; // Calcula o offset
 
-            String countQuery = "SELECT COUNT(*) FROM pedidos WHERE active = 1";  // Query para contar o total de pedidos
-
-            if (pesquisaAtivo != null && !pesquisaAtivo.isEmpty()) {
-                countQuery += " AND cliente LIKE '%" + pesquisaAtivo + "%'"; // Adiciona a cláusula de pesquisa
-            }
+            String countQuery = "SELECT COUNT(*) FROM pedidos WHERE active = 1"; // Query para contar o total de pedidos
             PreparedStatement countStmt = conn.prepareStatement(countQuery); // Prepara a query
             ResultSet countResult = countStmt.executeQuery(); // Executa a query
             countResult.next(); // Pega o resultado
             int totalRows = countResult.getInt(1); // Pega o total de pedidos
             int totalPages = (int) Math.ceil(totalRows / (double) limit); // Calcula o total de páginas
 
-            String selectQuery = "SELECT * FROM pedidos WHERE active = 1"; // Query para selecionar os pedidos
-
-            if (pesquisaAtivo != null && !pesquisaAtivo.isEmpty()) {
-                selectQuery += " AND cliente LIKE '%" + pesquisaAtivo + "%'"; // Adiciona a cláusula de pesquisa
-            }
-
-            selectQuery += " ORDER BY id DESC LIMIT ?, ?"; // Adiciona a cláusula de limite e offset
-
+            String selectQuery = "SELECT * FROM pedidos WHERE active = 1 ORDER BY id DESC LIMIT ?, ?"; // Query para selecionar os pedidos
             PreparedStatement selectStmt = conn.prepareStatement(selectQuery); // Prepara a query
             selectStmt.setInt(1, offset); // Adiciona o offset
             selectStmt.setInt(2, limit); // Adiciona o limite
@@ -151,16 +136,15 @@
                 <h2>Pedidos Ativos<button id="openFormButton" class="btn btn-outline-primary" type="button"
                                           style="margin-left: 15px; margin-bottom: 2px;">Adicionar</button>
                                           </h2>
-                                          <% if (pesquisaAtivo != null && !pesquisaAtivo.isEmpty()) { %>
-                                          <p style="font-size: 20px;"><b>Mostrando resultados para</b> <%= pesquisaAtivo != null ? pesquisaAtivo : "Todos os pedidos" %></p>
-                                            <% } %>
+        
+
                                        </div>
                                         
             <!-- Paginação -->
             <div class="pages">  
                 <!-- Mecanismo de busca -->
 
-                <form action="" method="GET" style="font-size: 15px;"> 
+                <form action="dashboardSearch.jsp" method="GET" style="font-size: 15px;"> 
                     <input type="text" name="pesquisaAtivo" placeholder="&nbsp; Pesquisar..." style="border-radius: 5px;">
                 </form>
                 <% if (totalPages > 1) { %> 

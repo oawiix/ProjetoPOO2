@@ -35,8 +35,10 @@
         <!-- End of New Users Section -->
 
         <!-- Recent Orders Table -->
-        <h1 style="margin-top:20px">Usuarios</h1>
-        <div class="">
+        <div class="container">
+            <h1 style="margin-top:20px">Usuarios</h1>
+        </div>
+        <div class="" >
             <%
             ResultSet usuarios = conn.createStatement().executeQuery("SELECT * FROM usuarios ORDER BY id DESC");
             while (usuarios.next()) {
@@ -44,14 +46,20 @@
                 int tipo = usuarios.getInt("Tipo");
                 String cargo = tipo == 1 ? "Administrador" : "Colaborador";
                 String data = usuarios.getString("Data");
+                int id = usuarios.getInt("id");
             %>
-            <div class="col-md-4">
+
+            <div class="col-md-4" >
                 <div class="new-users">
                     <div class="user-list">
                         <div class="user">
-                            <h2><%= nome %></h2>
-                            <p style="margin-top:3px"><%= cargo %></p>
-                            <p><h3>Data de Criação</h3> <%= data %></p>
+                            <h2 ><%= nome %></h2>
+                            <p><%= cargo %></p>
+                            <p><b>Data </b> <%= data %></p>
+                            <form action="deleteUser" method="GET">
+                                <input type="hidden" name="id" value="<%= id %>">
+                                <button style="margin-left: -20px" type="submit"
+                                    class="btn btn-outline-danger">Excluir</button>
                         </div>
                     </div>
                 </div>
