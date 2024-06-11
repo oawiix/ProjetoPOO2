@@ -20,7 +20,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import model.usuario;
 
-@WebServlet(urlPatterns = {"/deleteUser"})
+@WebServlet(urlPatterns = {"/deleteUser2"})
 public class deleteUsuario extends HttpServlet {
 
     /**

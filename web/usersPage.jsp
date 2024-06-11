@@ -56,10 +56,11 @@
                             <h2 ><%= nome %></h2>
                             <p><%= cargo %></p>
                             <p><b>Data </b> <%= data %></p>
-                            <form action="deleteUser" method="GET">
+                            <form action="deleteUser2" method="GET">
                                 <input type="hidden" name="id" value="<%= id %>">
                                 <button style="margin-left: -20px" type="submit"
                                     class="btn btn-outline-danger">Excluir</button>
+                            </form>
                         </div>
                     </div>
                 </div>

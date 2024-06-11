@@ -36,7 +36,7 @@
              padding: var(--card-padding);
              box-shadow: var(--box-shadow);
              border-radius: var(--card-border-radius);">
-            <form style=" margin-top: 88px; margin-bottom: 130px; font-size: 25px;" action="addusuario" method="POST">
+            <form style=" margin-top: 88px; margin-bottom: 130px; font-size: 25px;" action="addUsuario" method="POST">
 
                 <span style="margin-left: 25px;"><b>NOME</b></span>
                 <input type="text" name="nome" value="" style="padding: 5px; border-radius: 5px;"><br><br>
@@ -54,7 +54,7 @@
                        style="padding: 5px;border-radius: 5px;"><br><br>
 
                 <span style="margin-left: 25px;"><b>TIPO</b></span>
-                <select name="tipo" id="escolha" style="border-radius: 5px; padding:5px">
+                <select name="tipo" id="tipo" style="border-radius: 5px; padding:5px">
                     <option value="1">Administrador</option>
                     <option value="0">Colaborador</option>
                 </select><br><br>

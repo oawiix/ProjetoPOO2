@@ -13,7 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import model.usuario;
 
-@WebServlet(urlPatterns = {"/addusuario"})
+@WebServlet(urlPatterns = {"/addUsuario"})
 public class addUsuario extends HttpServlet {
 
     /**
