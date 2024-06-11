@@ -243,8 +243,8 @@
 
                                 <button id="decrementButton5x" class="btn btn-outline-primary" type="button">-5</button><br>
 
-                                <span style="margin-left: 25px;"><b>VALOR</b></span>
-                                <input type="number" step="0.01" name="valor" placeholder="R$ "
+                                <span style="margin-left: 25px;"><b>VALOR</b>&nbsp; R$</span>
+                                <input type="number" step="0.01" name="valor" placeholder="0"
                                        style="padding: 15px;background-color:var(--color-background);color: var(--color-dark);"><br><br>
 
                                 <button class="btn btn-danger" id="closeFormButton" type="button"
