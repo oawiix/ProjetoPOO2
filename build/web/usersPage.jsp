@@ -37,7 +37,7 @@
         <!-- Recent Orders Table -->
         <div class="container">
             <h1 style="margin-top:20px">Usuarios</h1>
-        </div>
+        
         <div class="" >
             <%
             ResultSet usuarios = conn.createStatement().executeQuery("SELECT * FROM usuarios ORDER BY id DESC");

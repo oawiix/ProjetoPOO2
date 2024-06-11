@@ -55,8 +55,8 @@
 
                 <span style="margin-left: 25px;"><b>TIPO</b></span>
                 <select name="tipo" id="escolha" style="border-radius: 5px; padding:5px">
-                    <option value="0">Administrador</option>
-                    <option value="1">Colaborador</option>
+                    <option value="1">Administrador</option>
+                    <option value="0">Colaborador</option>
                 </select><br><br>
 
                 <span style="margin-left: 25px;"><b>DATA</b> <%= new java.text.SimpleDateFormat("dd-MM-yyyy").format(new java.util.Date()) %></span>

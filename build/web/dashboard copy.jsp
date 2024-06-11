@@ -227,7 +227,7 @@
                                 <span style="margin-left: 25px;"><b>PRODUTO</b></span>
                                 <input type="text" name="produto" placeholder="..." style="padding: 15px;" required><br>
 
-                                <span style="margin-left: 25px;"><b>DESCRIï¿½ï¿½O</b></span>
+                                <span style="margin-left: 25px;"><b>DESCRIÇÃO</b></span>
                                 <input type="text" name="descricao" placeholder="Detalhes" style="padding: 15px;"><br>
 
                                 <span style="margin-left: 25px;"><b>QUANTIDADE</b></span>
@@ -371,6 +371,7 @@
         <!-- Fim Perfil do Usuario -->
         <!-- Fim do Nome do Uusuario + Cargo e Hora  -->
     </body>
+
 </html>
 <% }
 else {
