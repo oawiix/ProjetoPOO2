@@ -25,32 +25,47 @@
  
     <%
     int page2 = request.getParameter("page") != null ? Integer.parseInt(request.getParameter("page")) : 1; // Pega o valor da página
+    String pesquisaNotAtivo = request.getParameter("pesquisaNotAtivo"); // Recebe o valor de pesquisaNotAtivo via GET   
     int limit = 12; // Define o limite de pedidos por página
+    if (pesquisaNotAtivo != null && !pesquisaNotAtivo.isEmpty()) {
+    limit = 11; // Define o limite de pedidos por página
+    }
     int offset = (page2 - 1) * limit; // Calcula o offset
 
-    String countQuery = "SELECT COUNT(*) FROM pedidos WHERE active = 2"; // Query para contar o total de pedidos
+    String countQuery = "SELECT COUNT(*) FROM pedidos WHERE active = 2";  // Query para contar o total de pedidos
+
+    if (pesquisaNotAtivo != null && !pesquisaNotAtivo.isEmpty()) {
+        countQuery += " AND cliente LIKE '%" + pesquisaNotAtivo + "%'"; // Adiciona a cláusula de pesquisa
+    }
     PreparedStatement countStmt = conn.prepareStatement(countQuery); // Prepara a query
     ResultSet countResult = countStmt.executeQuery(); // Executa a query
     countResult.next(); // Pega o resultado
     int totalRows = countResult.getInt(1); // Pega o total de pedidos
     int totalPages = (int) Math.ceil(totalRows / (double) limit); // Calcula o total de páginas
 
-    String selectQuery = "SELECT * FROM pedidos WHERE active = 2 ORDER BY id DESC LIMIT ?, ?"; // Query para selecionar os pedidos
+    String selectQuery = "SELECT * FROM pedidos WHERE active = 2"; // Query para selecionar os pedidos
+
+    if (pesquisaNotAtivo != null && !pesquisaNotAtivo.isEmpty()) {
+        selectQuery += " AND cliente LIKE '%" + pesquisaNotAtivo + "%'"; // Adiciona a cláusula de pesquisa
+    }
+
+    selectQuery += " ORDER BY id DESC LIMIT ?, ?"; // Adiciona a cláusula de limite e offset
+
     PreparedStatement selectStmt = conn.prepareStatement(selectQuery); // Prepara a query
     selectStmt.setInt(1, offset); // Adiciona o offset
     selectStmt.setInt(2, limit); // Adiciona o limite
     ResultSet pedidosResult = selectStmt.executeQuery(); // Executa a query
-    %>
+%>
     <!-- Conteudo Main -->
     <main>
         <style>
             .pages {
                 text-decoration: none;
                 display: flex;
-                justify-content: end;
+                justify-content: flex-end;
                 gap: 20px;
-                margin-bottom: -57px;
-                margin-top: 40px;
+                margin-bottom: -130px;
+                margin-top: 75px;
                 margin-right: 20px;
 
             }
@@ -61,41 +76,57 @@
         </style>
         <!-- Paginacao -->
         <div class="pages">
-            <% if (totalPages > 1) { %>
-                <% if (page2 > 1) { %>
-                    <a href="?page=<%= page2 - 1 %>">Anterior</a>
+            <form action="" method="GET" style="font-size: 15px;"> 
+                <input type="text" name="pesquisaNotAtivo" placeholder="&nbsp; Pesquisar..." style="border-radius: 5px;">
+            </form>
+            <% if (pesquisaNotAtivo != null && !pesquisaNotAtivo.isEmpty()) { %>
+                <% if (totalPages > 1) { %> 
+                <% if (page2 > 1) {%> 
+                <a href="?page=<%= page2 - 1%>&pesquisaNotAtivo=<%= pesquisaNotAtivo %>">Anterior</a> 
                 <% } // Verifica se há mais de uma página %>
 
                 <% for (int i = 1; i <= totalPages; i++) { %>
-                    <% if (i == page2) { %>
-                        <span><b><%= i %></b></span>
-                    <% } else { %>
-                        <a href="?page=<%= i %>"><%= i %></a>
-                    <% } %>
+                <% if (i == page2) { %>
+                <span><b><%= i%></b></span>
+                <% } else {%>
+                <a href="?page=<%= i%>&pesquisaNotAtivo=<%= pesquisaNotAtivo %> "><%= i%></a>
+                <% } %>
                 <% } // Loop para mostrar as páginas %>
 
                 <% if (page2 < totalPages) { %>
-                    <a href="?page=<%= page2 + 1 %>">Proximo</a>
+                <a href="?page=<%= page2 + 1%>&pesquisaNotAtivo=<%= pesquisaNotAtivo %>">Proximo</a>
                 <% } %>
-            <% } // Verifica se há mais páginas %>
+                <% } // Verifica se há mais páginas %>
+                <% } else if (totalPages > 1) { %> 
+                    <% if (page2 > 1) {%> 
+                    <a href="?page=<%= page2 - 1%>">Anterior</a> 
+                    <% } // Verifica se há mais de uma página %>
+    
+                    <% for (int i = 1; i <= totalPages; i++) { %>
+                    <% if (i == page2) { %>
+                    <span><b><%= i%></b></span>
+                    <% } else {%>
+                    <a href="?page=<%= i%>"><%= i%></a>
+                    <% } %>
+                    <% } // Loop para mostrar as páginas %>
+    
+                    <% if (page2 < totalPages) { %>
+                    <a href="?page=<%= page2 + 1%>">Proximo</a>
+                    <% } } %>
         </div>
         <!-- Fim Paginacao -->
 
         <!-- Tabela Historico de Pedidos -->
-        <div class="recent-orders" style="margin-top: 20px;">
+        <div class="recent-orders" style="margin-top: 50px;">
             <!-- Botão para abrir o pop-up -->
             <h1>Todos os pedidos       
                 <p>                 
-                <%
-                int total3 = 0; // Variável para armazenar o total
-                ResultSet pedidos3 = s.executeQuery("SELECT id FROM pedidos WHERE active = 2"); // Query para pegar os pedidos concluídos
-                while (pedidos3.next()) { // Loop para contar os pedidos
-                    total3 += 1; // Conta os pedidos
-                }
-                out.print(total3); // Mostra o total de pedidos
-                %> 
+                <%= totalRows %>
             </p> 
-            </h1>
+        </h1>
+                <% if (pesquisaNotAtivo != null && !pesquisaNotAtivo.isEmpty()) { %>
+                    <p style="font-size: 20px;"><b>Mostrando resultados para</b> <%= pesquisaNotAtivo != null ? pesquisaNotAtivo : "Todos os pedidos" %></p>
+                      <% } %>
 
             <table border="1" id="testetable">
                 <!-- Cabecalho da Tabela -->
@@ -113,7 +144,11 @@
 
                 <!-- Corpo da Tabela -->
                 <tbody>
-                    <%
+                    <%if (totalRows == 0) { %>
+                        <tr>
+                            <td colspan="7" style="text-align: center;">Nenhum resultado encontrado</td>
+                        </tr>
+                    <% } else { 
                          while (pedidosResult.next()) { %>
                                 <tr>
                                     <td><%= pedidosResult.getInt("id") %></td> 
@@ -132,7 +167,7 @@
                                         </form>
                                     </td>
                                 </tr>
-                        <% } %>
+                        <% }} %>
                 </tbody>
             </table>
 

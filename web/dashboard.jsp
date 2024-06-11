@@ -163,23 +163,42 @@
                 <form action="" method="GET" style="font-size: 15px;"> 
                     <input type="text" name="pesquisaAtivo" placeholder="&nbsp; Pesquisar..." style="border-radius: 5px;">
                 </form>
+                <% if (pesquisaAtivo != null && !pesquisaAtivo.isEmpty()) { %>
                 <% if (totalPages > 1) { %> 
                 <% if (page2 > 1) {%> 
-                <a href="?page=<%= page2 - 1%>">Anterior</a> 
+                <a href="?page=<%= page2 - 1%>&pesquisaAtivo=<%= pesquisaAtivo %>">Anterior</a> 
                 <% } // Verifica se há mais de uma página %>
 
                 <% for (int i = 1; i <= totalPages; i++) { %>
                 <% if (i == page2) { %>
                 <span><b><%= i%></b></span>
                 <% } else {%>
-                <a href="?page=<%= i%>"><%= i%></a>
+                <a href="?page=<%= i%>&pesquisaAtivo=<%= pesquisaAtivo %> "><%= i%></a>
                 <% } %>
                 <% } // Loop para mostrar as páginas %>
 
                 <% if (page2 < totalPages) { %>
-                <a href="?page=<%= page2 + 1%>">Proximo</a>
+                <a href="?page=<%= page2 + 1%>&pesquisaAtivo=<%= pesquisaAtivo %>">Proximo</a>
                 <% } %>
                 <% } // Verifica se há mais páginas %>
+                <% } else if (totalPages > 1) { %> 
+                    <% if (page2 > 1) {%> 
+                    <a href="?page=<%= page2 - 1%>">Anterior</a> 
+                    <% } // Verifica se há mais de uma página %>
+    
+                    <% for (int i = 1; i <= totalPages; i++) { %>
+                    <% if (i == page2) { %>
+                    <span><b><%= i%></b></span>
+                    <% } else {%>
+                    <a href="?page=<%= i%>"><%= i%></a>
+                    <% } %>
+                    <% } // Loop para mostrar as páginas %>
+    
+                    <% if (page2 < totalPages) { %>
+                    <a href="?page=<%= page2 + 1%>">Proximo</a>
+                    <% } } %>
+                    
+
 
             </div>
             <!-- Fim da Paginação -->
@@ -303,7 +322,11 @@
                         <!-- Corpo da Tabela -->
                         <tbody>
                             <!-- Foreach para apresentar todos os resultados na tabela -->
-                            <%
+                            <%if (totalRows == 0) { %>
+                                <tr>
+                                    <td colspan="7" style="text-align: center;">Nenhum resultado encontrado</td>
+                                </tr>
+                            <% } else { 
                          while (pedidosResult.next()) { %>
                             <tr>
                                 <td><%= pedidosResult.getInt("id") %></td>
@@ -327,7 +350,7 @@
                                     </form>
                                 </td>
                             </tr>
-                            <% } %>
+                            <% }} %>
                         </tbody>
                 </table>
                 <!-- Fim da Tabela com Pedidos -->
