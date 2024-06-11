@@ -121,7 +121,7 @@
             <!-- Botão para abrir o pop-up -->
             <h1>Todos os pedidos       
                 <p>                 
-                <%= totalRows %>
+                    <span style="color: rgb(119, 119, 119);"><%= totalRows %></span>
             </p> 
         </h1>
                 <% if (pesquisaNotAtivo != null && !pesquisaNotAtivo.isEmpty()) { %>
@@ -162,7 +162,7 @@
                                         <form action="delete" method="GET">
                                             <input type="hidden" name="id" value=<%= pedidosResult.getInt("id") %>>
                                             <button style="margin-left: -20px" type="submit"
-                                                class="btn btn-danger">Excluir</button>
+                                                class="btn btn-outline-danger">Excluir</button>
 
                                         </form>
                                     </td>

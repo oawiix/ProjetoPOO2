@@ -148,9 +148,9 @@
             <!-- Paginacao e Formulario  -->
             <div class="recent-orders" style="padding:10px">
                 <!-- Botão para abrir o pop-up -->
-                <h2>Pedidos Ativos<button id="openFormButton" class="btn btn-outline-primary" type="button"
+                <h1>Pedidos Ativos <span style="color: rgb(119, 119, 119);"><%= totalRows %></span><button id="openFormButton" class="btn btn-outline-primary" type="button"
                                           style="margin-left: 15px; margin-bottom: 2px;">Adicionar</button>
-                                          </h2>
+                                          </h1>
                                           <% if (pesquisaAtivo != null && !pesquisaAtivo.isEmpty()) { %>
                                           <p style="font-size: 20px;"><b>Mostrando resultados para</b> <%= pesquisaAtivo != null ? pesquisaAtivo : "Todos os pedidos" %></p>
                                             <% } %>
