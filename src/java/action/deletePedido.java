@@ -20,7 +20,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import model.pedido;
 
-@WebServlet(urlPatterns = {"/delete"})
+@WebServlet(urlPatterns = {"/deletePedido"})
 public class deletePedido extends HttpServlet {
 
     /**

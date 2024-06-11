@@ -159,7 +159,7 @@
                                     <td><b>R$: </b> <%= pedidosResult.getDouble("valor") %></td>
                                     <td>
                                         <!-- Excluir pedido do Banco de Dados -->
-                                        <form action="delete" method="GET">
+                                        <form action="deletePedido" method="GET">
                                             <input type="hidden" name="id" value=<%= pedidosResult.getInt("id") %>>
                                             <button style="margin-left: -20px" type="submit"
                                                 class="btn btn-outline-danger">Excluir</button>

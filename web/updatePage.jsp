@@ -5,13 +5,13 @@
             Connection conn = conexao.getConnection(); // Pega a conexão
             Statement s = conn.createStatement(); // Cria um statement %>  
 
-<% int id=Integer.parseInt(request.getParameter("id"));  // Pega o id do pedido
+<% int id2 = Integer.parseInt(request.getParameter("id"));  // Pega o id do pedido
     String countQuery = "SELECT * FROM pedidos WHERE id = ?"; // Query para pegar o pedido
     PreparedStatement countStmt = conn.prepareStatement(countQuery); // Prepara a query
-    countStmt.setInt(1, id); // Adiciona o id
+    countStmt.setInt(1, id2); // Adiciona o id
     ResultSet pedidosResult = countStmt.executeQuery(); // Executa a query
     pedidosResult.next(); // Pega o resultado
-    int id2 = pedidosResult.getInt(1);  // Pega o id
+    int id3 = pedidosResult.getInt(1);  // Pega o id
     String nome = pedidosResult.getString(2);  // Pega o nome
     String produto = pedidosResult.getString(3);    // Pega o produto
     String descricao = pedidosResult.getString(4); // Pega a descrição
@@ -44,7 +44,7 @@
 
     <h2>
         <h1>Editando pedido</h1>
-        <h2>ID do Pedido: <%= id%>
+        <h2>ID do Pedido: <%= id2 %>
         </h2>
 
         <!-- Formulário de edição do pedido -->
@@ -83,7 +83,7 @@
                         style="margin-left: 30px">R$</span>
                     <input type="number" step="0.01" name="valor" value="<%= valor%>"
                            style="padding: 5px;border-radius: 5px;"><br><br>
-                    <input type="hidden" name="id" value=<%=id%>>
+                    <input type="hidden" name="id" value=<%=id2%>>
 
                     <a class="btn btn-danger" type="button" href="dashboard.jsp"
                        style="padding: 15px; padding-left: 40px; padding-right: 40px; margin-left: 25px; margin-top: 25px;">Cancelar</a>

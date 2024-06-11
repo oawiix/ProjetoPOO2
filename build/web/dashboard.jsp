@@ -214,25 +214,25 @@
                      transform: translate(-50%, -50%);
                      padding: 25px;
                      border-radius: 15px;
-                     background-color: #fff;">
+                     background-color:var(--color-background)">
                     <div>
                         <div>
                             <!-- Formulario para adicionar um novo produto -->
                             <form id="testeform" action="addPedido" method="POST">
                                 <h1>Adicionar um novo produto</h1>
                                 <span style="margin-left: 25px;"><b>NOME</b></span>
-                                <input type="text" name="nome" placeholder="Nome do Cliente" style="padding: 15px;"
+                                <input type="text" name="nome" placeholder="Nome do Cliente" style="padding: 15px;background-color:var(--color-background); color: var(--color-dark);"
                                        required><br>
 
                                 <span style="margin-left: 25px;"><b>PRODUTO</b></span>
-                                <input type="text" name="produto" placeholder="..." style="padding: 15px;" required><br>
+                                <input type="text" name="produto" placeholder="..." style="padding: 15px;background-color:var(--color-background); color: var(--color-dark);" required><br>
 
-                                <span style="margin-left: 25px;"><b>DESCRI��O</b></span>
-                                <input type="text" name="descricao" placeholder="Detalhes" style="padding: 15px;"><br>
+                                <span style="margin-left: 25px;"><b>DESCRICAO</b></span>
+                                <input type="text" name="descricao" placeholder="Detalhes" style="padding: 15px;background-color:var(--color-background); color: var(--color-dark);"><br>
 
                                 <span style="margin-left: 25px;"><b>QUANTIDADE</b></span>
                                 <input type="number" name="quantidade" placeholder="1" value="1" min="1"
-                                       style="padding: 15px;"><br>
+                                       style="padding: 15px;background-color:var(--color-background); color: var(--color-dark);"><br>
 
                                 <button id="incrementButton" class="btn btn-outline-primary" type="button"
                                         style="margin-left:25px;">+</button>
@@ -245,7 +245,7 @@
 
                                 <span style="margin-left: 25px;"><b>VALOR</b></span>
                                 <input type="number" step="0.01" name="valor" placeholder="R$ "
-                                       style="padding: 15px;"><br><br>
+                                       style="padding: 15px;background-color:var(--color-background);color: var(--color-dark);"><br><br>
 
                                 <button class="btn btn-danger" id="closeFormButton" type="button"
                                         style="padding-left: 155px; padding-right: 155px; padding:10px">Cancelar</button>
